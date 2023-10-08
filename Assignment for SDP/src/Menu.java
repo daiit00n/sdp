@@ -42,6 +42,7 @@ public class Menu {
             case 3: house = new WifiDecorator(house); decorator(); break;
             case 4: house = new DoghouseDecorator(house); decorator(); break;
             case 5: break;
+            default: System.out.println("Wrong command. Try again."); decorator();
         }
     }
 
@@ -59,6 +60,8 @@ public class Menu {
             case 1: renting.setRentStrategy(new MonthRent(), house); renting.renting(); break;
             case 2: renting.setRentStrategy(new DayRent(), house); renting.renting(); break;
             case 3: renting.setRentStrategy(new HourRent(), house); renting.renting(); break;
+            default:
+                System.out.println("Wrong command. Try again."); rentMenu();
         }
     }
 }
