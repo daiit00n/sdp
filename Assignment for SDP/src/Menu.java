@@ -1,3 +1,7 @@
+import Adapter.Adapter;
+import Adapter.Dollar;
+import Adapter.PriceDisplay;
+import Adapter.Tenge;
 import decorator.*;
 import rent.DayRent;
 import rent.HourRent;
@@ -5,10 +9,9 @@ import rent.MonthRent;
 import rent.Renting;
 
 import java.util.Scanner;
-public class Menu {
+public class Menu{
     Scanner s = new Scanner(System.in);
     IHouse house = new House();
-    Renting renting = new Renting();
     private int command;
 
     public void mainMenu(){
@@ -47,9 +50,21 @@ public class Menu {
     }
 
     private void buyMenu(){
+        PriceDisplay priceDisplay = new Dollar(house);
         System.out.println("You bought " + house.getDescription());
+        priceDisplay.priceDisplay();
+        System.out.print("Show currency in Tenge?(1 - yes/0 - no): ");
+        command = s.nextInt();
+
+        if (command == 1){
+            Tenge tenge = new Adapter(house);
+            tenge.priceDisplay();
+        }
+
     }
     private void rentMenu() {
+        Renting renting = new Renting(house);
+
         System.out.println("---------------");
         System.out.println("1.Rent for month.\n2.Rent for day\n3.Rent for hour.");
         System.out.println("---------------");
@@ -57,9 +72,9 @@ public class Menu {
         command = s.nextInt();
 
         switch (command){
-            case 1: renting.setRentStrategy(new MonthRent(), house); renting.renting(); break;
-            case 2: renting.setRentStrategy(new DayRent(), house); renting.renting(); break;
-            case 3: renting.setRentStrategy(new HourRent(), house); renting.renting(); break;
+            case 1: renting.setRentStrategy(new MonthRent()); renting.renting(); break;
+            case 2: renting.setRentStrategy(new DayRent()); renting.renting(); break;
+            case 3: renting.setRentStrategy(new HourRent()); renting.renting(); break;
             default:
                 System.out.println("Wrong command. Try again."); rentMenu();
         }

@@ -5,11 +5,14 @@ import decorator.IHouse;
 
 public class Renting {
     RentStrategy rentStrategy;
-    IHouse iHouse = new House();
+    IHouse iHouse;
 
-    public void setRentStrategy(RentStrategy rentStrategy, IHouse iHouse) {
-        this.rentStrategy = rentStrategy;
+    public Renting(IHouse iHouse){
         this.iHouse = iHouse;
+    }
+
+    public void setRentStrategy(RentStrategy rentStrategy) {
+        this.rentStrategy = rentStrategy;
     }
 
     public void renting(){

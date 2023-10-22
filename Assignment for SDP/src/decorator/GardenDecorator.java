@@ -8,4 +8,9 @@ public class GardenDecorator extends HouseDecorator{
     public String getDescription() {
         return super.getDescription() + " with Garden";
     }
+
+    @Override
+    public float getPrice() {
+        return super.getPrice() + 500F;
+    }
 }

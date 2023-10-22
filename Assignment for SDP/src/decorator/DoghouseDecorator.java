@@ -8,4 +8,9 @@ public class DoghouseDecorator extends HouseDecorator{
     public String getDescription() {
         return super.getDescription() + " with Doghouse";
     }
+
+    @Override
+    public float getPrice() {
+        return super.getPrice() + 149.99F;
+    }
 }

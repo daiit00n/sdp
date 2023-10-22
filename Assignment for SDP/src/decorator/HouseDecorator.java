@@ -11,4 +11,9 @@ public abstract class HouseDecorator implements IHouse{
     public String getDescription() {
         return iHouse.getDescription();
     }
+
+    @Override
+    public float getPrice() {
+        return iHouse.getPrice();
+    }
 }

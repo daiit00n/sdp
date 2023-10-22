@@ -8,4 +8,9 @@ public class WifiDecorator extends HouseDecorator{
     public String getDescription() {
         return super.getDescription() + " with Wi-Fi";
     }
+
+    @Override
+    public float getPrice() {
+        return super.getPrice() + 11.99F;
+    }
 }
